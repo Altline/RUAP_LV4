@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumTests
@@ -20,7 +20,7 @@ namespace SeleniumTests
         [SetUp]
         public void SetupTest()
         {
-            driver = new FirefoxDriver();
+            driver = new ChromeDriver();
             baseURL = "https://demo.opencart.com/";
             verificationErrors = new StringBuilder();
         }
@@ -118,7 +118,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("input-review")).SendKeys("Sufficiently long review text");
             driver.FindElement(By.XPath("//form[@id='form-review']/div[4]/div/input[3]")).Click();
             driver.FindElement(By.Id("button-review")).Click();
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Assert.AreEqual("Thank you for your review. It has been submitted to the webmaster for approval.", driver.FindElement(By.XPath("//form[@id='form-review']/div[2]")).Text);
         }
 
